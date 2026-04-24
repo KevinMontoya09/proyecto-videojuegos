@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    container_name: servidor_videojuegos
+    
+    ports:
+      - "8080:80"
+    #sincronizo con mi carpeta local  
+    volumes:
+      - ./src:/var/www/html
+    
+    env_file:
+      - .env
