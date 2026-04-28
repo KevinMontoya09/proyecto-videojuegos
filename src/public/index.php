@@ -31,8 +31,7 @@ $resultado = $conn->query($sql);
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Título</th>
-                <th>Género</th>
+                <th>Título</th>                
                 <th>Precio</th>
             </tr>
         </thead>
@@ -41,8 +40,7 @@ $resultado = $conn->query($sql);
                 <?php while($fila = $resultado->fetch_assoc()): ?>
                     <tr>
                         <td><?php echo $fila['id']; ?></td>
-                        <td><?php echo $fila['titulo']; ?></td>
-                        <td><?php echo $fila['genero']; ?></td>
+                        <td><?php echo $fila['titulo']; ?></td>                        
                         <td><?php echo $fila['precio']; ?>€</td>
                     </tr>
                 <?php endwhile; ?>
