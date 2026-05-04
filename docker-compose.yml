@@ -5,7 +5,7 @@ services:
     
     ports:
       - "8080:80"
-    #sincronizo con mi carpeta local  
+     
     volumes:
       - ./src:/var/www/html
     

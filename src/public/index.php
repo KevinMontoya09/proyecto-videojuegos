@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
+?>
+
+
+<a href="logout.php" class="btn-logout">Cerrar Sesión</a>
+
+
 <?php 
 // 1. Conexión a AWS RDS
 include '../config/db.php'; 
