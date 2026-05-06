@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pass = $_POST['password'];
 
     // Buscamos al usuario
-    $stmt = $conn->prepare("SELECT id, password FROM usuarios WHERE usuario = ?");
+    $stmt = $conexion->prepare("SELECT id, password FROM usuarios WHERE usuario = ?");
     $stmt->bind_param("s", $user);
     $stmt->execute();
     $resultado = $stmt->get_result();

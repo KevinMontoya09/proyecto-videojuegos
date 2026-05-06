@@ -12,18 +12,17 @@ if (!isset($_SESSION['usuario'])) {
 
 
 <?php 
-// 1. Conexión a AWS RDS
+//Conexión AWS
 include '../config/db.php'; 
 
-// 2. Consulta SQL con JOIN (Para que aparezca el nombre de la categoría)
-$sql = "SELECT v.id, v.titulo, v.precio, c.nombre as categoria_nombre 
-        FROM videojuegos v
-        LEFT JOIN categorias c ON v.categoria_id = c.id
+//Consulta con JOIN 
+$sql = "SELECT v.*, c.nombre AS categoria_nombre 
+        FROM videojuegos v 
+        INNER JOIN categorias c ON v.categoria_id = c.id 
         ORDER BY v.id DESC";
 
-$resultado = $conn->query($sql);
+$resultado = $conexion->query($sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -128,9 +127,26 @@ $resultado = $conn->query($sql);
                         <td style="color:white; font-weight:700;"><?php echo htmlspecialchars($fila['titulo']); ?></td>
                         <td><span class="badge"><?php echo $fila['categoria_nombre'] ?? 'GENERAL'; ?></span></td>
                         <td class="precio"><?php echo number_format($fila['precio'], 2); ?> €</td>
-                        <td>
-                            <a href="borrar.php?id=<?php echo $fila['id']; ?>" class="eliminar" onclick="return confirm('¿Eliminar de AWS?')">[ ELIMINAR ]</a>
-                        </td>
+                       
+
+
+
+<td>
+    <div class="acciones">
+        <!-- Enlace para Editar -->
+        <a href="editar.php?id=<?php echo $fila['id']; ?>" style="color: #00f2ff; text-decoration: none; font-weight: bold; margin-right: 15px;">
+            [ EDITAR ]
+        </a>
+
+    <a href="borrar.php?id=<?php echo $fila['id']; ?>" style="color: #ff0055; margin-left: 10px; ..."></a>
+
+        <!-- Enlace para Eliminar -->
+        <a href="borrar.php?id=<?php echo $fila['id']; ?>" style="color: #ff0055; text-decoration: none; font-weight: bold;">
+            [ ELIMINAR ]
+        </a>
+    </div>
+</td> 
+
                     </tr>
                 <?php endwhile; ?>
             <?php else: ?>

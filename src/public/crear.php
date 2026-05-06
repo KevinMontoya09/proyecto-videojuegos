@@ -6,7 +6,7 @@ $mensaje = "";
 
 
 $sql_cat = "SELECT id, nombre FROM categorias GROUP BY nombre ORDER BY nombre ASC";
-$res_categorias = $conn->query($sql_cat);
+$res_categorias = $conexion->query($sql_cat);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titulo = trim($_POST['titulo']);
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($titulo) && !empty($precio) && !empty($categoria_id)) {
         // 3. CONSULTA PARAMETRIZADA (Seguridad UF1845)
         // Añadimos el campo categoria_id a la inserción
-        $stmt = $conn->prepare("INSERT INTO videojuegos (titulo, precio, categoria_id) VALUES (?, ?, ?)");
+        $stmt = $conexion->prepare("INSERT INTO videojuegos (titulo, precio, categoria_id) VALUES (?, ?, ?)");
         
         // "sdi" -> String (titulo), Double (precio), Integer (categoria_id)
         $stmt->bind_param("sdi", $titulo, $precio, $categoria_id);

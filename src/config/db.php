@@ -1,15 +1,17 @@
 <?php
-
 $host = 'databasepruebaclase.cnppohiwfhks.us-east-1.rds.amazonaws.com';
 $user = 'admin';
 $pass = 'America2004';
 $db   = 'databasepruebaclase';
 
-$conn = new mysqli($host, $user, $pass, $db);
+//Conexion con el servidor
+$conexion = new mysqli($host, $user, $pass, $db);
 
-if ($conn->connect_error) {
-    die(" Error de conexión a AWS: " . $conn->connect_error);
+
+if ($conexion->connect_error) {
+    die(" Error de conexión a AWS: " . $conexion->connect_error);
 }
-// Esto es para que los acentos y la 'ñ' salgan bien
-$conn->set_charset("utf8");
+
+
+$conexion->set_charset("utf8");
 ?>

@@ -10,13 +10,13 @@ $sql_menu = "SELECT c.id, c.nombre, COUNT(v.id) as total
              FROM categorias c 
              LEFT JOIN videojuegos v ON c.id = v.categoria_id 
              GROUP BY c.id, c.nombre";
-$res_menu = $conn->query($sql_menu);
+$res_menu = $conexion->query($sql_menu);
 
 // 4. Si hay una categoría seleccionada, buscamos esos juegos (JOIN)
 $juegos_filtrados = null;
 if ($categoria_id) {
     $sql_filtro = "SELECT titulo, precio FROM videojuegos WHERE categoria_id = $categoria_id";
-    $juegos_filtrados = $conn->query($sql_filtro);
+    $juegos_filtrados = $conexion->query($sql_filtro);
 }
 ?>
 
