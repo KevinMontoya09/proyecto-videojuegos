@@ -8,14 +8,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['usuario'];
     $pass = $_POST['password'];
 
-    // Buscamos al usuario
+    // Buscar el usuario
     $stmt = $conexion->prepare("SELECT id, password FROM usuarios WHERE usuario = ?");
     $stmt->bind_param("s", $user);
     $stmt->execute();
     $resultado = $stmt->get_result();
 
     if ($fila = $resultado->fetch_assoc()) {
-        if ($pass === $fila['password']) { // Verificación directa para el proyecto
+        if ($pass === $fila['password']) { 
             $_SESSION['usuario'] = $user;
             header("Location: index.php");
             exit();

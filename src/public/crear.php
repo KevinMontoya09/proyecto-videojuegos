@@ -14,8 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $categoria_id = $_POST['categoria_id']; // Recogemos la categoría seleccionada
 
     if (!empty($titulo) && !empty($precio) && !empty($categoria_id)) {
-        // 3. CONSULTA PARAMETRIZADA (Seguridad UF1845)
-        // Añadimos el campo categoria_id a la inserción
+        
+        // Añadimos el campo categoria id a la inserción
         $stmt = $conexion->prepare("INSERT INTO videojuegos (titulo, precio, categoria_id) VALUES (?, ?, ?)");
         
         // "sdi" -> String (titulo), Double (precio), Integer (categoria_id)
@@ -26,10 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: index.php");
             exit();
         } else {
-            $mensaje = "<div class='alert error'>❌ Error al guardar en AWS: " . $stmt->error . "</div>";
+            $mensaje = "<div class='alert error'> Error al guardar en AWS: " . $stmt->error . "</div>";
         }
     } else {
-        $mensaje = "<div class='alert warning'>⚠️ Por favor, completa todos los campos, incluida la categoría.</div>";
+        $mensaje = "<div class='alert warning'> Por favor, completa todos los campos, incluida la categoría.</div>";
     }
 }
 ?>

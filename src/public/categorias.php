@@ -1,18 +1,18 @@
 <?php 
-// 1. Conexión a AWS RDS
+// Conexión a AWS 
 include '../config/db.php'; 
 
-// 2. Obtener la categoría seleccionada (si existe)
+//  Obtener la categoría seleccionada 
 $categoria_id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
-// 3. Consulta para listar las categorías y el conteo de juegos (GROUP BY)
+// Consulta para listar las categorías y el conteo de juegos (GROUP BY)
 $sql_menu = "SELECT c.id, c.nombre, COUNT(v.id) as total 
              FROM categorias c 
              LEFT JOIN videojuegos v ON c.id = v.categoria_id 
              GROUP BY c.id, c.nombre";
 $res_menu = $conexion->query($sql_menu);
 
-// 4. Si hay una categoría seleccionada, buscamos esos juegos (JOIN)
+// 4. Si hay una categoría seleccionada, buscamos esos juegos 
 $juegos_filtrados = null;
 if ($categoria_id) {
     $sql_filtro = "SELECT titulo, precio FROM videojuegos WHERE categoria_id = $categoria_id";

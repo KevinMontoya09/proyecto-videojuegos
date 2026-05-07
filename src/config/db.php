@@ -1,5 +1,5 @@
 <?php
-
+// Uso PDO por su seguridad y abstracción de datos.
 
 function mi_log_personalizado($mensaje) {
     $archivo = 'debug.log'; 

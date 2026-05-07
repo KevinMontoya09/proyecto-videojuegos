@@ -29,13 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stock  = $_POST['stock'];
     $cat_id = $_POST['categoria_id'];
 
-    // Consulta segura (Requisito UF1845)
+    // Consulta segura 
     $sql_update = "UPDATE videojuegos SET titulo = ?, precio = ?, stock = ?, categoria_id = ? WHERE id = ?";
     $stmt_update = $conexion->prepare($sql_update);
     $stmt_update->bind_param("sdiii", $titulo, $precio, $stock, $cat_id, $id);
 
     if ($stmt_update->execute()) {
-        // Redirigir al index al terminar
+        // Redige al index al terminar
         header("Location: index.php?msg=actualizado");
         exit();
     } else {

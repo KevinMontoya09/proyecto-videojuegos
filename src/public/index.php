@@ -105,7 +105,7 @@ $resultado = $conexion->query($sql);
 
 <main>
     <div style="display:flex; justify-content: space-between; align-items:center;">
-        <h2 style="font-family: 'Orbitron';">Base de Datos en Vivo</h2>
+        <h2 style="font-family: 'Orbitron';">Juegos en Base de Datos</h2>
         <a href="crear.php" class="btn-registro">+ REGISTRAR JUEGO</a>
     </div>
 

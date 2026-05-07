@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mensaje = "<p style='color: #ff4655;'>Las contraseñas no coinciden.</p>";
     } else {
         // Verificar si el usuario ya existe
-        $check = $conn->prepare("SELECT id FROM usuarios WHERE usuario = ?");
+        $check = $conexion->prepare("SELECT id FROM usuarios WHERE usuario = ?");
         $check->bind_param("s", $user);
         $check->execute();
         if ($check->get_result()->num_rows > 0) {
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Registrarse</button>
         </form>
         <div class="links">
-            ¿Ya tienes cuenta? <a href="login.php">Inicia sesión aquí</a>
+            ¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a>
         </div>
     </div>
 </body>
